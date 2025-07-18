@@ -31,3 +31,4 @@ xdis
 psycopg2
 Flask-SQLAlchemy==3.0.2
 Flask-Login==0.6.3
+Flask-Bcrypt==1.0.1
