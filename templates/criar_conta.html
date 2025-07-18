@@ -1,0 +1,47 @@
+{% extends ("homepage.html") %} 
+{% block title %}
+<title>Criar Conta</title>
+{%endblock%} {% block form %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<form method="POST">
+  {{ form.csrf_token }}
+
+  <div class="div-input">
+    {{ form.username.label(class_="label") }}
+
+    {{ form.username(class_="input") }}
+  </div>
+
+  <div class="div-input">
+      {{ form.email.label(class_="label") }}
+      {% if form.email.errors %}
+        {% for erro in form.email.errors %}
+            <p style="color: red">{{ erro }}</p>
+        {% endfor %}
+      {% endif %}
+      {{ form.email(class_="input") }}
+  </div> 
+  <div class="div-input">
+      {{ form.senha.label(class_="label") }}
+      {% if form.senha.errors %}
+        {% for erro in form.senha.errors %}
+            <p style="color: red">{{ erro }}</p>
+        {% endfor %}
+      {% endif %}
+      {{form.senha(class_="input") }}
+  </div>
+  <div class="div-input">
+      {{ form.confirmar_senha.label(class_="label") }}
+      {% if form.confirmar_senha.errors %}
+        {% for erro in form.confirmar_senha.errors %}
+            <p style="color: red">{{ erro }}</p>
+        {% endfor %}
+      {% endif %}
+      {{ form.confirmar_senha(class_="input")}}
+  </div> 
+  <div class="div-botao">
+    {{ form.botao_confirmacao(class_="botao-login") }}
+    <a href="{{ url_for('homepage')}}" class="link-criarconta">Já tem uma conta? Faça Login aqui</a>
+</div>
+</form>
+{% endblock %}

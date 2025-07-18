@@ -1,0 +1,49 @@
+{% extends ("homepage.html") %} {%block title%}
+<title>Pynterest {{ usuario }}</title>
+{%endblock%}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/style.css') }}"
+/>
+
+<body>
+  {%block body%}
+  <div class="container">
+    {% include ("navbar.html") %}
+    <div class="bloco-add-img">
+      <h2>Perfil de {{ usuario.username }}</h2>
+      <p>Programação é uma Arte</p>
+
+      <div class="bloco-input-botao">
+        {% if form %}
+        <form
+          class="bloco-input-botao"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          {{ form.csrf_token }}
+          <div class="bloco-arquivo">
+            <button class="botao-arquivo">
+              {{ form.foto(class_="botao-arquivo") }}
+            </button>
+          </div>
+          <button class="botao-login">
+            Enviar Foto{{ form.botao_confirmacao(class_="botao-login") }}
+          </button>
+        </form>
+        {%endif%}
+      </div>
+    </div>
+    <div class="conteudo">
+      {% for foto in usuario.fotos %}
+      <div class="bloco-imagem">
+        <img
+          src="{{ url_for('static', filename='fotos-posts/{}'.format(foto.imagem)) }}"
+        />
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {%endblock%}
+</body>
