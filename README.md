@@ -5,4 +5,4 @@
 <h2>Desenvolvido com Flask/Python</h2>
 <p>Curso da Hashtag Programação</p>
 <br>
-<a href="templates/homepage.html">Acesse o Site_Pynterest</a>
+<a href="pyterest/templates/homepage.html">Acesse o Site_Pynterest</a>
